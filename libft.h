@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:14:04 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/05 13:49:52 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:24:48 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s1);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_atoi(const char *str);
+char		*ft_itoa(int n);
 
 #endif
