@@ -6,26 +6,13 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:24:03 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/05 13:38:44 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:21:46 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	if (n == 0)
-		return (0);
-	while (*s1 && *s2 && *s1 == *s2 && n > 1)
-	{
-		s1++;
-		s2++;
-		n--;
-	}
-	return (*s1 - *s2);
-}
-
-unsigned int	ft_strlen(char *str)
+unsigned int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 
@@ -76,20 +63,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	return (len_dest + len_src);
 }
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n > ft_strlen(s1))
-		return (ft_strstr(s1, s2));
-	while (ft_strncmp(s1, s2, ft_strlen(s2)) != 0 && *s1 &&
-			i + ft_strlen(s2) - 1 < n)
-	{
-		i++;
-		s1++;
-	}
-	if (i + ft_strlen(s2) - 1 == n)
-		return (NULL);
-	return (*s1 ? (char*)s1 : NULL);
-}

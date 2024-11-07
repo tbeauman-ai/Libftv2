@@ -6,11 +6,12 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:33:07 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/06 14:37:27 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:15:26 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void    ft_putchar_fd(char c, int fd)
 {
@@ -34,6 +35,6 @@ void    ft_putstr(char *s)
 
 void    ft_putendl_fd(char *s, int fd)
 {
-    ft_putstr_fd(s, fd)
+    ft_putstr_fd(s, fd);
     ft_putchar_fd('\n', fd);
 }
