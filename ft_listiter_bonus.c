@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:27:03 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/08 16:33:08 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:45:59 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
         ft_lstadd_front(&head, f(lst->content));
         lst = lst->next;
     }
+    (void)del;
     return (head);
 }

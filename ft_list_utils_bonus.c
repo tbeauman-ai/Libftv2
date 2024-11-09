@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:34:15 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/07 14:49:23 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:40:10 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(void const *content)
 	ret = (t_list*)malloc(sizeof(t_list));
 	if (!ret)
 		return (NULL);
-    ret->content = content;
+    ret->content = (void *)content;
 	ret->next = NULL;
 	return (ret);
 }
