@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:45:24 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/06 14:28:11 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:06:12 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ char		*ft_itoa(int n)
 	int		neg;
 
 	if (n == -2147483648)
-		return ("-2147483648");
+	{
+		ret = (char *)malloc(sizeof(char) * ft_strlen("-2147483648"));
+		ft_memcpy(ret, "-2147483648", ft_strlen("-2147483648"));
+		return (ret);
+	}
 	neg = n < 0 ? 1 : 0;
 	ret = (char*)malloc(ft_nb_c(n) + 1);
 	i = ft_nb_c(n);

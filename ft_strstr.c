@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:16:38 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/09 09:44:03 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:43:49 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (s2[0] == 0)
+		return ((char *)s1);
+	if (n == 0)
+		return (NULL);
 	if (n > ft_strlen(s1))
 		return (ft_strstr(s1, s2));
+	if (n < ft_strlen(s2))
+		return (NULL);
 	while (ft_strncmp(s1, s2, ft_strlen(s2)) != 0 && *s1 &&
 			i + ft_strlen(s2) - 1 < n)
 	{

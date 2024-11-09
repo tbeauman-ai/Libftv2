@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:28:22 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/06 14:28:28 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:37:15 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	ret = (char*)malloc(ft_strlen(s) + 1);
+	if (!ret)
+		return (NULL);
 	i = 0;
 	if (!ret)
 		return (NULL);
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		ret[i] = f(i, s[i]);
 		i++;
 	}
+	ret[i] = 0;
 	return (ret);
 }
