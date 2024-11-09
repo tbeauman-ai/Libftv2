@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:10:43 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/08 17:03:05 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 09:03:04 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*cdst;
-	char	*csrc;
+	unsigned char	*cdst;
+	unsigned char	*csrc;
 	size_t		i;
 
-	cdst = (char *)dst;
-	csrc = (char *)src;
+	cdst = (unsigned char *)dst;
+	csrc = (unsigned char *)src;
+	if (!dst && !src)
+		return (dst);
 	if (dst < src)
 	{
 		i = 0;
@@ -63,14 +65,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	else
-	{
-		i = len - 1;
-		while (i >= 0)
-		{
-			cdst[i] = csrc[i];
-			i--;
-		}
-	}
+		while (len--)
+			cdst[len] = csrc[len];
 	return (dst);
 }
 
