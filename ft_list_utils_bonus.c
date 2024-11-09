@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:34:15 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/08 16:40:10 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 09:45:06 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    ft_lstadd_front(t_list **lst, t_list *new)
     *lst = new;
 }
 
-int     ft_lstlize(t_list *lst)
+int     ft_lstsize(t_list *lst)
 {
     int     i;
 
