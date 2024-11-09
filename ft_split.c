@@ -6,22 +6,11 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:20:25 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/06 14:23:00 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/09 08:54:31 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int	ft_is_in(char c, char const *charset)
-{
-	while (*charset)
-	{
-		if (*charset == c)
-			return (1);
-		charset++;
-	}
-	return (0);
-}
 
 char	*ft_strndup(char const *s, unsigned int n)
 {
@@ -41,20 +30,20 @@ char	*ft_strndup(char const *s, unsigned int n)
 	return (ret);
 }
 
-int	count_words(char const *str, char const *charset)
+int	count_words(char const *str, char c)
 {
 	int	count;
 
 	count = 0;
-	while (ft_is_in(*str, charset))
+	while (*str == c)
 		str++;
 	while (*str)
 	{
-		if (ft_is_in(*str, charset))
+		if (*str == c)
 			str++;
 		else
 		{
-			while (!ft_is_in(*str, charset))
+			while (!(*str == c))
 				str++;
 			count++;
 		}
@@ -62,24 +51,24 @@ int	count_words(char const *str, char const *charset)
 	return (count);
 }
 
-char	**ft_fill_ret(char **tab, char const *str, char const *charset)
+char	**ft_fill_ret(char **tab, char const *str, char c)
 {
 	int	i[2];
 	int	n_word;
 
 	i[0] = 0;
 	n_word = 0;
-	tab = (char **)malloc(sizeof(char *) * (count_words(str, charset) + 1));
+	tab = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
 	if (!tab)
 		return (0);
 	while (str[i[0]] != 0)
 	{
-		if (ft_is_in(str[i[0]], charset))
+		if (str[i[0]] == c)
 			i[0]++;
 		else
 		{
 			i[1] = 0;
-			while (!ft_is_in(str[i[0] + i[1]], charset))
+			while (!(str[i[0] + i[1]] == c))
 				i[1]++;
 			tab[n_word] = ft_strndup(str + i[0], i[1]);
 			if (!tab[n_word++])
@@ -91,10 +80,9 @@ char	**ft_fill_ret(char **tab, char const *str, char const *charset)
 	return (tab);
 }
 
-char	**ft_split(char const *str, char const *charset)
+char	**ft_split(char const *str, char c)
 {
 	char	**ret;
-	int		len;
 
 	ret = NULL;
 	if (!str || !*str)
@@ -104,18 +92,7 @@ char	**ft_split(char const *str, char const *charset)
 			return (0);
 		ret[0] = 0;
 	}
-	else if (!charset || *charset == 0)
-	{
-		ret = (char **)malloc(sizeof(char *) * 2);
-		if (!ret)
-			return (0);
-		len = 0;
-		while (str[len])
-			len++;
-		ret[0] = ft_strndup(str, len);
-		ret[1] = 0;
-	}
 	else
-		ret = ft_fill_ret(ret, str, charset);
+		ret = ft_fill_ret(ret, str, c);
 	return (ret);
 }
