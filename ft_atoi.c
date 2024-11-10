@@ -6,85 +6,100 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:45:24 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/09 18:06:12 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:52:28 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int		ret;
-	int		sign;
-	int		i;
+	int	ret;
+	int	sign;
+	int	i;
 
 	i = 0;
 	ret = 0;
 	sign = 1;
-    while (*str == '\t' || *str == '\f' || *str == '\v' || *str == '\r' ||
-			*str == '\n' || *str == 32)
+	while (*str == '\t' || *str == '\f' || *str == '\v' || *str == '\r'
+		|| *str == '\n' || *str == 32)
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-        if (*str == '-')
-            sign = -1;
+		if (*str == '-')
+			sign = -1;
 		str++;
 	}
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 		ret = 10 * ret + (str[i++] - '0');
-    return (ret * sign);
+	return (ret * sign);
 }
 
-#include "libft.h"
-
-static int	ft_tenpow(unsigned int nb)
+int	ft_nb_c(int n)
 {
-	if (nb > 0)
-		return (10 * ft_tenpow(nb - 1));
-	return (1);
-}
-
-static int	ft_nb_c(int n)
-{
-	int		count;
+	int	count;
 
 	count = 1;
-	if (n > 999999999)
-		return (10);
-	if (n < -999999999)
-		return (11);
-	while (n / ft_tenpow(count) != 0)
-		count++;
 	if (n < 0)
 		count++;
+	while (n / 10 != 0)
+	{
+		count++;
+		n = n / 10;
+	}
 	return (count);
 }
 
-char		*ft_itoa(int n)
+int	ft_abs(int n)
 {
-	char	*ret;
-	int		i;
-	int		neg;
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
+}
 
-	if (n == -2147483648)
+void	ft_strrev(char *str)
+{
+	unsigned int	i;
+	unsigned int	len;
+	char			tmp;
+
+	i = 0;
+	len = ft_strlen(str);
+	while (i < len)
 	{
-		ret = (char *)malloc(sizeof(char) * ft_strlen("-2147483648"));
-		ft_memcpy(ret, "-2147483648", ft_strlen("-2147483648"));
-		return (ret);
+		tmp = str[i];
+		str[i] = str[len - 1];
+		str[len - 1] = tmp;
+		i++;
+		len--;
 	}
-	neg = n < 0 ? 1 : 0;
-	ret = (char*)malloc(ft_nb_c(n) + 1);
-	i = ft_nb_c(n);
-	n = neg == 1 ? -n : n;
-	if (!ret)
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		neg;
+	int		i;
+
+	neg = (n < 0);
+	str = (char *)malloc(sizeof(char) * (ft_nb_c(n) + 1));
+	if (!str)
 		return (NULL);
-	ret[i] = '\0';
-	while (i-- + 1 - neg)
+	str[ft_nb_c(n)] = 0;
+	if (!str)
+		return (NULL);
+	if (n == 0)
+		str[0] = '0';
+	i = 0;
+	while (n != 0)
 	{
-		ret[i] = n % 10 + '0';
-		n = n / 10;
+		str[i] = '0' + ft_abs(n % 10);
+		n /= 10;
+		i++;
 	}
-	if (neg == 1)
-		ret[0] = '-';
-	return (ret);
+	if (neg)
+		str[i] = '-';
+	ft_strrev(str);
+	return (str);
 }

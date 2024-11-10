@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:32:03 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/09 09:30:35 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:52:27 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ char	*ft_strchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == (char)c)
-			return ((char*)s);
+			return ((char *)s);
 		s += 1;
 	}
 	if ((char)c == '\0')
-		return ((char*)s);
+		return ((char *)s);
 	else
 		return (NULL);
 }
 
 char	*ft_strrchr(const char *s, int c)
 {
-    int     i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-        i++;
-    while (i + 1)
-    {
-        if (s[i] == (char)c)
-            return ((char *)(s + i));
-        i--;
-    }
+	i = 0;
+	while (s[i])
+		i++;
+	while (i + 1)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
+	}
 	return (NULL);
 }

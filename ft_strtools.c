@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:24:03 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/07 14:21:46 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:54:08 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	*dest = 0;
 	return (len_dest + len_src);
 }
-

@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:16:38 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/09 16:43:49 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:54:12 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 char	*ft_strstr(const char *s1, const char *s2)
 {
 	if (ft_strcmp(s2, "") == 0)
-		return ((char*)s1);
+		return ((char *)s1);
 	if (ft_strlen(s1) < ft_strlen(s2))
 		return (NULL);
 	while (ft_strncmp(s1, s2, ft_strlen(s2)) != 0 && *s1)
 		s1++;
 	if (*s1)
-		return (char *)s1;
+		return ((char *)s1);
 	return (NULL);
 }
 
@@ -38,8 +38,8 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 		return (ft_strstr(s1, s2));
 	if (n < ft_strlen(s2))
 		return (NULL);
-	while (ft_strncmp(s1, s2, ft_strlen(s2)) != 0 && *s1 &&
-			i + ft_strlen(s2) - 1 < n)
+	while (ft_strncmp(s1, s2, ft_strlen(s2)) != 0 && *s1 && i + ft_strlen(s2)
+		- 1 < n)
 	{
 		i++;
 		s1++;
@@ -47,6 +47,6 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	if (i + ft_strlen(s2) - 1 == n)
 		return (NULL);
 	if (*s1)
-		return (char *)s1;
+		return ((char *)s1);
 	return (NULL);
 }

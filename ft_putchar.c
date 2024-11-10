@@ -6,35 +6,35 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:33:07 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/07 14:15:26 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:24:03 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <unistd.h>
 
-void    ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-    write(fd, &c, 1);
+	write(fd, &c, 1);
 }
 
-void    ft_putchar(char c)
+void	ft_putchar(char c)
 {
-    ft_putchar_fd(c, 1);
+	ft_putchar_fd(c, 1);
 }
 
-void    ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    write(fd, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }
 
-void    ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
-    ft_putstr_fd(s, 1);
+	ft_putstr_fd(s, 1);
 }
 
-void    ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-    ft_putstr_fd(s, fd);
-    ft_putchar_fd('\n', fd);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

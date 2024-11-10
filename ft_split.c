@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:20:25 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/09 18:02:42 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:08:55 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	len_word(const char *str, int i, char c)
 {
-	int		ret;
+	int	ret;
 
 	ret = 0;
 	while (str[i] != c && str[i])
@@ -27,8 +27,8 @@ int	len_word(const char *str, int i, char c)
 
 int	count_words(const char *str, char c)
 {
-	int		r;
-	int		i;
+	int	r;
+	int	i;
 
 	r = 0;
 	i = 0;
@@ -52,90 +52,45 @@ int	count_words(const char *str, char c)
 	return (r);
 }
 
-char		**ft_split(const char *str, char c)
+int	clear_res(int l, int nw, char **res)
 {
-	int		i;
-	int		nw;
-	int		l;
-	char	**res;
+	while (l < nw)
+		free(res[l++]);
+	free(res);
+	return (1);
+}
 
-	if (!str || !*str)
-	{
-		res = (char **)malloc(sizeof(char *) * 1);
-		if (!res)
-			return (0);
-		res[0] = 0;
-		return (res);
-	}
+char	**process(const char *str, int i[2], char c, char **res)
+{
+	int	l;
+
+	l = 0;
+	res[i[1]] = (char *)malloc(sizeof(char) * (len_word(str, i[0], c) + 1));
+	if (!res[i[1]] && clear_res(l, i[1], res))
+		return (NULL);
+	while (str[i[0]] != c && str[i[0]])
+		res[i[1]][l++] = str[i[0]++];
+	res[i[1]++][l] = '\0';
+	return (res);
+}
+
+char	**ft_split(const char *str, char c)
+{
+	int		i[2];
+	char	**res;
 
 	res = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
 	if (!res)
 		return (NULL);
-	i = 0;
-	nw = 0;
-	while (str[i])
+	i[0] = 0;
+	i[1] = 0;
+	while (str[i[0]])
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i])
-		{
-			l = 0;
-			res[nw] = (char *)malloc(sizeof(char) * (len_word(str, i, c) + 1));
-			if (!res[nw])
-			{
-				while (l < nw)
-					free(res[l++]);
-				free(res);
-				return (NULL);
-			}
-			while (str[i] != c && str[i])
-				res[nw][l++] = str[i++];
-			res[nw++][l] = '\0';
-		}
+		while (str[i[0]] == c)
+			i[0]++;
+		if (str[i[0]] && !process(str, i, c, res))
+			return (NULL);
 	}
-	res[nw] = NULL;
+	res[i[1]] = NULL;
 	return (res);
 }
-/*
-char	**ft_split(char const *str, char c)
-{
-	char	**ret;
-	int		i;
-	int		j;
-	int	n_word;
-
-	ret = NULL;
-	if (!str || !*str)
-	{
-		ret = (char **)malloc(sizeof(char *) * 1);
-		if (!ret)
-			return (0);
-		ret[0] = 0;
-		return (ret);
-	}
-	
-
-	i = 0;
-	n_word = 0;
-	ret = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
-	if (!ret)
-		return (0);
-	while (str[i] != 0)
-	{
-		if (str[i] == c)
-			i++;
-		else
-		{
-			j = 0;
-			while (!(str[i + j] == c))
-				j++;
-			ret[n_word] = ft_strndup(str + i, j);
-			if (!ret[n_word++])
-				return (0);
-			i = i + j;
-		}
-	}
-	ret[n_word] = 0;
-	return (ret);
-
-}*/

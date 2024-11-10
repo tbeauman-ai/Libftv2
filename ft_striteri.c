@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:31:23 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/06 14:32:43 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:55:23 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int		i;
+	int	i;
 
 	if (!s)
 		return ;
