@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:14:04 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/10 11:54:22 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:58:38 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putnbr(int n);
 char				**ft_split(char const *str, char c);
 char				*ft_strndup(char const *s, unsigned int n);
+int					ft_toupper(int c);
+int					ft_tolower(int c);
 
 typedef struct s_list
 {

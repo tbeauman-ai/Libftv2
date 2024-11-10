@@ -6,7 +6,7 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:45:24 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/10 12:52:28 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:00:02 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str)
 	return (ret * sign);
 }
 
-int	ft_nb_c(int n)
+static int	ft_nb_c(int n)
 {
 	int	count;
 
@@ -50,7 +50,7 @@ int	ft_nb_c(int n)
 	return (count);
 }
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);
@@ -58,7 +58,7 @@ int	ft_abs(int n)
 		return (n);
 }
 
-void	ft_strrev(char *str)
+static void	ft_strrev(char *str)
 {
 	unsigned int	i;
 	unsigned int	len;

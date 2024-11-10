@@ -6,13 +6,13 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:44 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/10 12:22:58 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:01:51 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_in_set(char c, char const *set)
+static int	is_in_set(char c, char const *set)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	is_in_set(char c, char const *set)
 	return (0);
 }
 
-void	init_struct(int *i, int *start, int *end, char const *s1)
+static void	init_struct(int *i, int *start, int *end, char const *s1)
 {
 	*i = 0;
 	*start = 0;

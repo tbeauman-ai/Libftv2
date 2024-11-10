@@ -6,13 +6,13 @@
 /*   By: tbeauman <tbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:20:25 by tbeauman          #+#    #+#             */
-/*   Updated: 2024/11/10 12:08:55 by tbeauman         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:01:03 by tbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	len_word(const char *str, int i, char c)
+static int	len_word(const char *str, int i, char c)
 {
 	int	ret;
 
@@ -25,7 +25,7 @@ int	len_word(const char *str, int i, char c)
 	return (ret);
 }
 
-int	count_words(const char *str, char c)
+static int	count_words(const char *str, char c)
 {
 	int	r;
 	int	i;
@@ -52,7 +52,7 @@ int	count_words(const char *str, char c)
 	return (r);
 }
 
-int	clear_res(int l, int nw, char **res)
+static int	clear_res(int l, int nw, char **res)
 {
 	while (l < nw)
 		free(res[l++]);
@@ -60,7 +60,7 @@ int	clear_res(int l, int nw, char **res)
 	return (1);
 }
 
-char	**process(const char *str, int i[2], char c, char **res)
+static char	**process(const char *str, int i[2], char c, char **res)
 {
 	int	l;
 
